@@ -1,7 +1,5 @@
 package com.travelsguru.app.model;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,20 +15,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Document(collection = "Hotels")
-public class Hotel {
+@Document(collection = "rooms")
+public class Room {
 
 	@Id
-	private String hotelId;
-    private String hotelName;
-    private double rating;
+    private String roomId;
+	private String roomNo;
+    private String roomType;      
     private double pricePerNight;
+    private boolean available;
     private String image;
-    
+
     @DBRef
-    private List<Room> rooms;
-    
-    @DBRef
-    private Destination destination;
-    
+    private Hotel hotel;
 }
