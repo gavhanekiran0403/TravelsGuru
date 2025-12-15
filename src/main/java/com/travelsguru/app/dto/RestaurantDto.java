@@ -1,8 +1,4 @@
-package com.travelsguru.app.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.travelsguru.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,15 +11,14 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Document(collection = "restaurants")
-public class Restaurant {
+public class RestaurantDto {
 
-	@Id
 	private String restaurantId;
 	private String restaurantName;
 	private double rating;
 	private String image;
 	private double averageCost;
-
+	
 	private String destinationIds;
+
 }

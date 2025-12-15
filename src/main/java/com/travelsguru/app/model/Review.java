@@ -22,14 +22,11 @@ public class Review {
 
 	@Id
 	private String ReviewId;
-	
-	@DBRef
-	private User user;
-	
-	@DBRef
-	private TravelPackage travelPackage;
-	
 	private int rating;
 	private String comment;
 	private LocalDateTime createdAt;
+	
+	private String userId;
+	
+	private String travelPackageId;
 }

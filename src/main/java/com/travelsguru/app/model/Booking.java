@@ -22,18 +22,14 @@ public class Booking {
 
 	@Id
     private String BookingId;
-	
-	@DBRef
-    private TravelPackage travelPackage;
-	
     private LocalDate startDate;
     private LocalDate endDate;
     private double totalAmount;
     private String status;
     
-    @DBRef
-    private User user;
+    private String travelPackageId;
     
-    @DBRef
-    private Hotel hotel;
+    private String userId;
+    
+    private String hotelId;
 }

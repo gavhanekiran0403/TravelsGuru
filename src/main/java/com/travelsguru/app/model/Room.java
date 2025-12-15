@@ -26,6 +26,5 @@ public class Room {
     private boolean available;
     private String image;
 
-    @DBRef
-    private Hotel hotel;
+    private String hotelId;
 }

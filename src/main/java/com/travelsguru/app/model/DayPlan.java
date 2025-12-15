@@ -23,9 +23,7 @@ public class DayPlan {
     private int dayNumber;
     private String description;
     
-    @DBRef
-    private TravelPackage travelPackage;
+    private String travelPackageId;
     
-    @DBRef
-    private Activity activity;
+    private String activityId;
 }

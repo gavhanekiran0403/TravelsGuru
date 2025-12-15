@@ -1,12 +1,8 @@
-package com.travelsguru.app.model;
+package com.travelsguru.app.dto;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,15 +13,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Document(collection = "destination_categories")
-public class DestinationCategory {
+public class DestinationCategoryDto {
 
-	@Id
 	private String destiCategoryId;
 	private String destiCategoryName;
 	
 	private List<String> destinationIds;
 	
 	private List<String> travelPackageIds;
-	
 }

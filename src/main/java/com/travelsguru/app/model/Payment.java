@@ -22,12 +22,10 @@ public class Payment {
 
 	@Id
 	private String PaymentId;
-	
-	@DBRef
-    private Booking booking;
-	
     private double amount;
     private String method;
     private String status;
     private LocalDateTime paymentDate;
+    
+    private String bookingIds;
 }

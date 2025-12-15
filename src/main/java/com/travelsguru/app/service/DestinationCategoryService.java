@@ -2,18 +2,18 @@ package com.travelsguru.app.service;
 
 import java.util.List;
 
-import com.travelsguru.app.model.DestinationCategory;
+import com.travelsguru.app.dto.DestinationCategoryDto;
 
 public interface DestinationCategoryService {
 
-	public DestinationCategory createDestinationCategory(DestinationCategory destinationCategory);
+	DestinationCategoryDto createDestinationCategory(DestinationCategoryDto destinationCategoryDto);
 	
-	public DestinationCategory updateDestinationCategory(String destiCategoryId, DestinationCategory destinationCategory);
+	DestinationCategoryDto updateDestinationCategory(String destiCategoryId, DestinationCategoryDto destinationCategoryDto);
 	
-	public List<DestinationCategory> getAllDestinationCategory();
+	List<DestinationCategoryDto> getAllDestinationCategories();
 	
-	public DestinationCategory getDestinationCategoryById(String destiCategoryId);
+	DestinationCategoryDto getDestinationCategoryById(String destiCategoryId);
 	
-	public void deleteDestinationCategory(String destiCategoryId);
+	void deleteDestinationCategory(String destiCategoryId);
 	
 }

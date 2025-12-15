@@ -1,10 +1,6 @@
-package com.travelsguru.app.model;
+package com.travelsguru.app.dto;
 
 import java.util.List;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,10 +13,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Document(collection = "Hotels")
-public class Hotel {
+public class HotelDto {
 
-	@Id
 	private String hotelId;
     private String hotelName;
     private double rating;
@@ -30,5 +24,4 @@ public class Hotel {
     private List<String> roomIds;
     
     private String destinationId;
-    
 }

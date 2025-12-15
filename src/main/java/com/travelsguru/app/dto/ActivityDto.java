@@ -1,8 +1,4 @@
-package com.travelsguru.app.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.travelsguru.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,10 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Document(collection = "activities")
-public class Activity {
+public class ActivityDto {
 
-	@Id
 	private String activityId;
     private String activityTitle;
     private double price;
