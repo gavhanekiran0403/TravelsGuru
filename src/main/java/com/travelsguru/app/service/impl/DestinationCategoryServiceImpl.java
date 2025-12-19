@@ -36,8 +36,6 @@ public class DestinationCategoryServiceImpl implements DestinationCategoryServic
                         "DestinationCategory", "categoryId", destiCategoryId));
 
         category.setDestiCategoryName(categoryDto.getDestiCategoryName());
-        category.setDestinationIds(categoryDto.getDestinationIds());
-        category.setTravelPackageIds(categoryDto.getTravelPackageIds());
 
         return categoryMapper.entityToDto(categoryRepository.save(category));
     }

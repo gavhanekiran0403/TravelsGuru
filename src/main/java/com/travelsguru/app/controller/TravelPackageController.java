@@ -19,13 +19,13 @@ import com.travelsguru.app.exception.ApiResponse;
 import com.travelsguru.app.service.TravelPackageService;
 
 @RestController
-@RequestMapping("/api/travel-packages/")
+@RequestMapping("/api/travel-packages")
 public class TravelPackageController {
 
 	@Autowired
 	private TravelPackageService travelPackageService;
 
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<TravelPackageDto> createTravelPackage(@RequestBody TravelPackageDto travelPackageDto) {
 		TravelPackageDto createdPackage = travelPackageService.createPackage(travelPackageDto);
 		return new ResponseEntity<>(createdPackage, HttpStatus.CREATED);
@@ -39,22 +39,28 @@ public class TravelPackageController {
 		return new ResponseEntity<>(updatedPackage, HttpStatus.OK);
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<List<TravelPackageDto>> getAllTravelPackages() {
-		List<TravelPackageDto> travelPackages = travelPackageService.getAllPackages();
-		return new ResponseEntity<>(travelPackages, HttpStatus.OK);
+		List<TravelPackageDto> travelPackagesDtos = travelPackageService.getAllPackages();
+		return new ResponseEntity<>(travelPackagesDtos, HttpStatus.OK);
 	}
 
 	@GetMapping("/{packageId}")
 	public ResponseEntity<TravelPackageDto> getTravelPackageById(@PathVariable String packageId) {
-		TravelPackageDto travelPackage = travelPackageService.getPackageById(packageId);
-		return new ResponseEntity<>(travelPackage, HttpStatus.OK);
+		TravelPackageDto travelPackageDto = travelPackageService.getPackageById(packageId);
+		return new ResponseEntity<>(travelPackageDto, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{packageId}")
 	public ResponseEntity<ApiResponse> deleteTravelPackage(@PathVariable String packageId) {
 		travelPackageService.deletePackage(packageId);
-		return new ResponseEntity<>(new ApiResponse("Travel package deleted successfully",  true), HttpStatus.OK);
+		return new ResponseEntity<>(new ApiResponse("Travel package deleted successfully", true), HttpStatus.OK);
+	}
+
+	@GetMapping("/destination/{destinationId}")
+	public ResponseEntity<List<TravelPackageDto>> getPackagesByDestination(@PathVariable String destinationId) {
+		List<TravelPackageDto> travelPackageDtos = travelPackageService.getPackagesByDestination(destinationId);
+		return new ResponseEntity<>(travelPackageDtos, HttpStatus.OK);
 	}
 
 }

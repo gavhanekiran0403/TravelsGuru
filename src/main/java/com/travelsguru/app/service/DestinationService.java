@@ -15,4 +15,6 @@ public interface DestinationService {
 	DestinationDto getDestinationById(String destinationId);
 	
 	void deleteDestination(String destinationId);
+	
+	List<DestinationDto> getDestinationsByCategory(String destiCategoryId);
 }

@@ -19,13 +19,13 @@ import com.travelsguru.app.exception.ApiResponse;
 import com.travelsguru.app.service.DestinationService;
 
 @RestController
-@RequestMapping("/api/destinations/")
+@RequestMapping("/api/destinations")
 public class DestinationController {
 
 	@Autowired
 	private DestinationService destinationService;
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<DestinationDto> createDestination(@RequestBody DestinationDto destinationDto) {
 		DestinationDto savedDestinationDto = destinationService.createDestination(destinationDto);
 		return new ResponseEntity<DestinationDto>(savedDestinationDto, HttpStatus.CREATED);
@@ -37,16 +37,16 @@ public class DestinationController {
 		return new ResponseEntity<DestinationDto>(updatedDestinationDto, HttpStatus.OK);
 	}
 	
-	@GetMapping("/")
+	@GetMapping
     public ResponseEntity<List<DestinationDto>> getAllDestinations() {
-        List<DestinationDto> destinations = destinationService.getAllDestinations();
-        return new ResponseEntity<>(destinations, HttpStatus.OK);
+        List<DestinationDto> destinationDtos = destinationService.getAllDestinations();
+        return new ResponseEntity<>(destinationDtos, HttpStatus.OK);
     }
 
     @GetMapping("/{destinationId}")
     public ResponseEntity<DestinationDto> getDestinationById(@PathVariable String destinationId) {
-        DestinationDto destination = destinationService.getDestinationById(destinationId);
-        return new ResponseEntity<>(destination, HttpStatus.OK);
+        DestinationDto destinationDto = destinationService.getDestinationById(destinationId);
+        return new ResponseEntity<>(destinationDto, HttpStatus.OK);
     }
     
     @DeleteMapping("/{destinationId}")
@@ -54,4 +54,12 @@ public class DestinationController {
         destinationService.deleteDestination(destinationId);
         return new ResponseEntity<>(new ApiResponse("Destination deleted successfully...", true), HttpStatus.OK);
     }
+    
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<DestinationDto>> getDestinationsByCategory(
+            @PathVariable String categoryId) {
+    	List<DestinationDto> destinationDtos = destinationService.getDestinationsByCategory(categoryId);
+        return new ResponseEntity<>(destinationDtos, HttpStatus.OK);
+    }
+
 }

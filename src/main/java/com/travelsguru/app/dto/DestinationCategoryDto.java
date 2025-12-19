@@ -17,8 +17,4 @@ public class DestinationCategoryDto {
 
 	private String destiCategoryId;
 	private String destiCategoryName;
-	
-	private List<String> destinationIds;
-	
-	private List<String> travelPackageIds;
 }
