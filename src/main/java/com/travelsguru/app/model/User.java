@@ -18,11 +18,14 @@ import lombok.ToString;
 public class User {
 
 	@Id
-	private String UserId;
+	private String userId;
     private String fullName;
     private String email;
     private String mobileNo;
     private String password;
     private String confirmPassword;
     private String activeStatus;
+    
+    private String role; 
 }
+ 

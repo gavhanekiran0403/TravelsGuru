@@ -1,7 +1,5 @@
 package com.travelsguru.app.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,13 +11,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class DestinationDto {
+public class LoginResponse {
 
-	private String destinationId;
-	private String destinationName;
-	private String country;
-	private String image;
-	private String description;
-	
-	private String destiCategoryId;
+    private String userId;
+    private String fullName;
+    private String email;
+    private String mobileNo;
+    private String activeStatus;
+    private String role;
+    private String message;
 }

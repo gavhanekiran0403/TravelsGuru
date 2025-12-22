@@ -1,6 +1,6 @@
 package com.travelsguru.app.dto;
 
-import java.util.List;
+import com.travelsguru.app.model.Hotel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,18 +8,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class HotelDto {
+public class RoomDto {
 
-	private String hotelId;
-    private String hotelName;
-    private double rating;
-    private double pricePerNight;
+	private String roomId;
+	private String roomNo;
+	private String roomType;
+	private double pricePerNight;
+    private boolean available;
     private String image;
     
-    private String destinationId;
+    private Hotel hotel;
 }
