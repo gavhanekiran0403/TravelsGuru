@@ -47,7 +47,7 @@ public class TravelPackageServiceImpl implements TravelPackageService {
 		travelPackage.setCityIds(travelPackageDto.getCityIds());
 		travelPackage.setHotelIds(travelPackageDto.getHotelIds());
 		travelPackage.setActivityIds(travelPackageDto.getActivityIds());
-		travelPackage.setDayPlanIds(travelPackageDto.getDayPlanIds());
+		
 
 		return travelPackageMapper.entityToDto(travelPackageRepository.save(travelPackage));
 	}

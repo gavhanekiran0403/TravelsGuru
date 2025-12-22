@@ -16,19 +16,18 @@ import lombok.ToString;
 public class TravelPackageDto {
 
 	private String packageId;
-    private String packageTitle;
-    private double price;
-    private int days;
-    private int nights;
-    private String description;
-    
-    private String destinationId;
-    
-    private List<String> cityIds;
-    
-    private List<String> hotelIds;
-    
-    private List<String> activityIds;
-    
-    private List<String> dayPlanIds;
+	private String packageTitle;
+	private double price;
+	private int days;
+	private int nights;
+	private String description;
+
+	private String destinationId;
+
+	private List<String> cityIds;
+
+	private List<String> hotelIds;
+
+	private List<String> activityIds;
+
 }

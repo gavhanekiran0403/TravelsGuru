@@ -20,14 +20,7 @@ public class DestinationDto {
 	private String country;
 	private String image;
 	private String description;
-	
+
 	private String destiCategoryId;
-	
-	private List<String> cityIds;
-	
-	private List<String> hotelIds;
-	
-	private List<String> restaurantIds;
-	
-	private List<String> activityIds;
+
 }

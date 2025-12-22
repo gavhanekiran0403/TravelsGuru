@@ -16,12 +16,10 @@ import lombok.ToString;
 public class HotelDto {
 
 	private String hotelId;
-    private String hotelName;
-    private double rating;
-    private double pricePerNight;
-    private String image;
-    
-    private List<String> roomIds;
-    
-    private String destinationId;
+	private String hotelName;
+	private double rating;
+	private double pricePerNight;
+	private String image;
+
+	private String destinationId;
 }
