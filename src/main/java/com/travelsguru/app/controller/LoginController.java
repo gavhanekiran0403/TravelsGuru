@@ -8,15 +8,22 @@ import com.travelsguru.app.model.Login;
 import com.travelsguru.app.service.LoginService;
 
 @RestController
-@RequestMapping("/api/login")
+@RequestMapping("/api")
 @CrossOrigin("*")
 public class LoginController {
 
     @Autowired
     private LoginService loginService;
 
-    @PostMapping
+    // LOGIN
+    @PostMapping("/login")
     public LoginResponse login(@RequestBody Login login) {
         return loginService.login(login);
+    }
+
+    // LOGOUT
+    @PostMapping("/logout/{userId}")
+    public String logout(@PathVariable String userId) {
+        return loginService.logout(userId);
     }
 }

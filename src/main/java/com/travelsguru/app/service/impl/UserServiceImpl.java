@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travelsguru.app.dto.UserDto;
+import com.travelsguru.app.exception.ResourceNotFoundException;
+import com.travelsguru.app.mapper.UserMapper;
 import com.travelsguru.app.model.User;
-import com.travelsguru.app.repositories.UserRepository;
+import com.travelsguru.app.repository.UserRepository;
 import com.travelsguru.app.service.UserService;
 
 @Service
@@ -17,73 +19,76 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // ================= ENTITY → DTO =================
-    private UserDto toDto(User user) {
-        if (user == null) return null;
-
-        UserDto dto = new UserDto();
-        dto.setUserId(user.getUserId());
-        dto.setFullName(user.getFullName());   // ✅ CHANGED
-        dto.setEmail(user.getEmail());
-        dto.setMobileNo(user.getMobileNo());
-        dto.setActiveStatus(user.getActiveStatus());
-        return dto;
-    }
-
-    // ================= DTO → ENTITY =================
-    private User toEntity(UserDto dto) {
-        if (dto == null) return null;
-
-        User user = new User();
-        user.setUserId(dto.getUserId());
-        user.setFullName(dto.getFullName());   // ✅ CHANGED
-        user.setEmail(dto.getEmail());
-        user.setMobileNo(dto.getMobileNo());
-        user.setPassword(dto.getPassword());
-        user.setConfirmPassword(dto.getConfirmPassword());
-        user.setActiveStatus(dto.getActiveStatus());
-        return user;
-    }
-
+    // ================= ADD USER =================
     @Override
     public UserDto addUser(UserDto userDto) {
-        User saved = userRepository.save(toEntity(userDto));
-        return toDto(saved);
+
+        // Default role
+        if (userDto.getRole() == null) {
+            userDto.setRole("USER");
+           
+        }
+        if (userDto.getActiveStatus() == null)  {
+        	userDto.setActiveStatus("INACTIVE");
+        }
+        
+        User savedUser = userRepository.save(UserMapper.toEntity(userDto));
+        return UserMapper.toDto(savedUser);
     }
 
+    // ================= UPDATE USER =================
     @Override
     public UserDto updateUser(String userId, UserDto userDto) {
-        User existing = userRepository.findById(userId).orElse(null);
-        if (existing == null) return null;
 
-        existing.setFullName(userDto.getFullName()); // ✅ CHANGED
+        User existing = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "User", "userId", userId));
+
+        existing.setFullName(userDto.getFullName());
         existing.setEmail(userDto.getEmail());
         existing.setMobileNo(userDto.getMobileNo());
         existing.setActiveStatus(userDto.getActiveStatus());
         existing.setPassword(userDto.getPassword());
         existing.setConfirmPassword(userDto.getConfirmPassword());
 
-        return toDto(userRepository.save(existing));
+        // update role only if provided
+        if (userDto.getRole() != null) {
+            existing.setRole(userDto.getRole());
+        }
+
+        return UserMapper.toDto(userRepository.save(existing));
     }
 
+    // ================= GET ALL USERS =================
     @Override
     public List<UserDto> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(this::toDto)
+                .map(UserMapper::toDto)
                 .collect(Collectors.toList());
     }
 
+    // ================= GET USER BY ID =================
     @Override
     public UserDto getUserById(String userId) {
-        return userRepository.findById(userId)
-                .map(this::toDto)
-                .orElse(null);
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "User", "userId", userId));
+
+        return UserMapper.toDto(user);
     }
 
+    // ================= DELETE USER =================
     @Override
     public String deleteUser(String userId) {
-        userRepository.deleteById(userId);
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "User", "userId", userId));
+
+        userRepository.delete(user);
         return "User deleted successfully!";
     }
 }
+ 

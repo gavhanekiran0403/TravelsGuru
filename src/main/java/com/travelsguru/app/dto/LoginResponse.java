@@ -18,5 +18,6 @@ public class LoginResponse {
     private String email;
     private String mobileNo;
     private String activeStatus;
+    private String role;
     private String message;
 }

@@ -6,4 +6,6 @@ import com.travelsguru.app.model.Login;
 public interface LoginService {
 
     LoginResponse login(Login login);
+    
+    String logout(String userId);
 }

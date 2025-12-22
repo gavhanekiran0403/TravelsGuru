@@ -20,4 +20,6 @@ public class UserDto {
     private String password;
     private String confirmPassword;
     private String activeStatus;
+    
+    private String role; 
 }
