@@ -22,5 +22,8 @@ public class DestinationDto {
 	private String description;
 
 	private String destiCategoryId;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a93c58429f2ebfa28bf3a160bca7627d93fdb7a8
 }

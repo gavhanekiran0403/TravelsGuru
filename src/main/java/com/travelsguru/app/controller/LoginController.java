@@ -8,7 +8,7 @@ import com.travelsguru.app.model.Login;
 import com.travelsguru.app.service.LoginService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 @CrossOrigin("*")
 public class LoginController {
 

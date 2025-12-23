@@ -24,8 +24,12 @@ public class DayPlan {
 	private String dayPlanId;
     
     private String travelPackageId;
+<<<<<<< HEAD
     private List<DayPlan.Day> days;
 
+=======
+    private List<Day> days;
+>>>>>>> a93c58429f2ebfa28bf3a160bca7627d93fdb7a8
     
  // ================= INNER DAY CLASS =================
     @NoArgsConstructor
@@ -40,4 +44,8 @@ public class DayPlan {
         private List<String> activityIds; // Activity IDs or names
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a93c58429f2ebfa28bf3a160bca7627d93fdb7a8

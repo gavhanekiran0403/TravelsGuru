@@ -18,6 +18,7 @@ import lombok.ToString;
 public class DayPlanDto {
 
 	private String dayPlanId;
+<<<<<<< HEAD
 
 	private String travelPackageId;
 	private List<DayPlanDto.Day> days;
@@ -35,3 +36,21 @@ public class DayPlanDto {
 		private List<String> activityIds;
 	}
 }
+=======
+    
+    private String travelPackageId;
+    private List<Day> days;
+    
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Getter
+    @Setter
+    @ToString
+    public static class Day {
+    	
+    	private int dayNumber;           
+        private String description;      
+        private List<String> activityIds;
+    }
+}
+>>>>>>> a93c58429f2ebfa28bf3a160bca7627d93fdb7a8

@@ -21,7 +21,7 @@ import lombok.ToString;
 public class Review {
 
 	@Id
-	private String ReviewId;
+	private String reviewId;
 	private int rating;
 	private String comment;
 	private LocalDateTime createdAt;
