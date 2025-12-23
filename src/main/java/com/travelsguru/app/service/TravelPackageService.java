@@ -15,4 +15,6 @@ public interface TravelPackageService {
     List<TravelPackageDto> getAllPackages();
 
     void deletePackage(String packageId); 
+    
+    List<TravelPackageDto> getPackagesByDestination(String destinationId);
 }

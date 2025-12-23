@@ -21,7 +21,5 @@ public class HotelDto {
     private double pricePerNight;
     private String image;
     
-    private List<String> roomIds;
-    
     private String destinationId;
 }

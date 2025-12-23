@@ -40,10 +40,6 @@ public class DestinationServiceImpl implements DestinationService {
         destination.setImage(destinationDto.getImage());
         destination.setDescription(destinationDto.getDescription());
         destination.setDestiCategoryId(destinationDto.getDestiCategoryId());
-        destination.setCityIds(destinationDto.getCityIds());
-        destination.setHotelIds(destinationDto.getHotelIds());
-        destination.setRestaurantIds(destinationDto.getRestaurantIds());
-        destination.setActivityIds(destinationDto.getActivityIds());
 
         return destinationMapper.entityToDto(destinationRepository.save(destination));
     }
@@ -71,4 +67,13 @@ public class DestinationServiceImpl implements DestinationService {
                         "Destination", "destinationId", destinationId));
         destinationRepository.delete(destination);
     }
+
+	@Override
+	public List<DestinationDto> getDestinationsByCategory(String destiCategoryId) {
+		
+		return destinationRepository.findByDestiCategoryId(destiCategoryId)
+	            .stream()
+	            .map(destinationMapper::entityToDto)
+	            .collect(Collectors.toList());
+	}
 }

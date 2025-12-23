@@ -19,13 +19,13 @@ import com.travelsguru.app.exception.ApiResponse;
 import com.travelsguru.app.service.DestinationCategoryService;
 
 @RestController
-@RequestMapping("/api/categories/")
+@RequestMapping("/api/categories")
 public class DestinationCategoryController {
 
 	@Autowired
 	private DestinationCategoryService destinationCategoryService;
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<DestinationCategoryDto> createDestinationCategory(@RequestBody DestinationCategoryDto destinationCategoryDto){
 		DestinationCategoryDto savedDestinationCategoryDto = destinationCategoryService.createDestinationCategory(destinationCategoryDto);
 		return new ResponseEntity<DestinationCategoryDto>(savedDestinationCategoryDto, HttpStatus.CREATED);
@@ -37,8 +37,8 @@ public class DestinationCategoryController {
 		return new ResponseEntity<DestinationCategoryDto>(updatedDestinationCategoryDto, HttpStatus.OK);
 	}
 	
-	@GetMapping("/")
-	public ResponseEntity<List<DestinationCategoryDto>> getAllDestinationCategory(){
+	@GetMapping
+	public ResponseEntity<List<DestinationCategoryDto>> getAllDestinationCategories(){
 		List<DestinationCategoryDto> destinationCategoriesDtos = destinationCategoryService.getAllDestinationCategories();
 		return new ResponseEntity<List<DestinationCategoryDto>>(destinationCategoriesDtos, HttpStatus.OK);
 	}

@@ -1,9 +1,6 @@
 package com.travelsguru.app.model;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -26,8 +23,6 @@ public class Hotel {
     private double rating;
     private double pricePerNight;
     private String image;
-    
-    private List<String> roomIds;
     
     private String destinationId;
     

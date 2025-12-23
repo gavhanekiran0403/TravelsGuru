@@ -52,7 +52,6 @@ public class HotelServiceImpl implements HotelService {
         hotel.setRating(hotelDto.getRating());
         hotel.setPricePerNight(hotelDto.getPricePerNight());
         hotel.setImage(hotelDto.getImage());
-        hotel.setRoomIds(hotelDto.getRoomIds());
         hotel.setDestinationId(hotelDto.getDestinationId());
 
         return hotelMapper.entityToDto(hotelRepository.save(hotel));
