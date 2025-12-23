@@ -1,6 +1,7 @@
 package com.travelsguru.app.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.travelsguru.app.dto.LoginResponse;
@@ -15,15 +16,19 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder; // ✅ ADD THIS
+
     // ================= LOGIN =================
     @Override
     public LoginResponse login(Login login) {
 
         User user = userRepository.findByEmail(login.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid email"));
+                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
 
-        if (!user.getPassword().equals(login.getPassword())) {
-            throw new RuntimeException("Invalid password");
+        // ✅ FIXED PASSWORD CHECK
+        if (!passwordEncoder.matches(login.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
         }
 
         // SET ACTIVE ON LOGIN
@@ -47,10 +52,9 @@ public class LoginServiceImpl implements LoginService {
     public String logout(String userId) {
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException(
-                        "User not found with userId : " + userId));
+                .orElseThrow(() ->
+                        new RuntimeException("User not found with userId : " + userId));
 
-        // SET INACTIVE ON LOGOUT
         user.setActiveStatus("INACTIVE");
         userRepository.save(user);
 
